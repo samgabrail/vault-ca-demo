@@ -16,3 +16,23 @@ This repo demonstrates:
   * vault_pki_secret_backend_intermediate_set_signed
 * How to use a Vault Certificate Authority to create Client and Server TLS certs.
 * How to bootstrap a Vault instance to make it its own Certificate Authority
+
+
+## Running everything
+
+1. Run env-vars.sh to export the VAULT_ADDR and VAULT_TOKEN Environment Variables
+2. Run `Terraform apply`
+3. Run `./create-certs_grafana.sh`
+
+Command to scp from local to remote machine
+```shell
+scp -r /mnt/c/Users/Sam/Deployments/HashiCorp/Vault/vault-ca-demo/output/grafana-certs Sameh@192.168.1.8:/var/services/homes/Sameh/automation/grafana/config
+```
+
+## Importing Certs into the Windows Cert Store
+The `create-certs_grafana.sh` script will automatically convert the Intermediate and Root Certs into the `.crt` format to be imported into the Windows Certificate Store
+
+In the Microsoft Management Console (mmc):
+- You will need to import the root ca cert into the Trusted Root Certification Authorities -> Certificates folder 
+- Also import the intermediate ca cert into the Intermediate Certification Authorities -> Certificates folder
+- Reboot the computer (I tried restarting the Chrome browser, but that didn't work)
