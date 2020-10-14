@@ -2,4 +2,4 @@
 *.tfstate
 *.tfstate.backup
 output/*
-env-vars-vault-client-no-tls.sh
+env-vars.sh
