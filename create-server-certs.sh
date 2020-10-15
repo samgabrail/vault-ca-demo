@@ -25,7 +25,3 @@ cat output/$1.json | jq -r '.data.ca_chain[]' > output/$1/ca_chain.pem
 # Dump the certificates in text mode
 openssl x509 -noout -text -in output/$1/ca.pem > output/$1/ca.pem.txt 
 openssl x509 -noout -text -in output/$1/$1_cert.pem > output/$1/$1_cert.pem.txt
-
-# Convert the root and int certs from .pem to .crt to be used in the Windows Certificate Store
-openssl x509 -outform der -in output/root_ca/ca_cert.pem -out output/root_ca/ca_cert.crt
-openssl x509 -outform der -in output/int_ca/int_cert.pem -out output/int_ca/int_cert.crt

@@ -6,6 +6,15 @@ resource "vault_mount" "pki_int" {
     max_lease_ttl_seconds = 63072000 # 2 years
     description = "Intermediate Authority for ${var.server_cert_domain}"
 }
+
+# Modify the mount point and set URLs for the issuer and crl.
+resource "vault_pki_secret_backend_config_urls" "config_urls_int" {
+  depends_on = [ vault_mount.pki_int ]  
+  backend              = vault_mount.pki_int.path
+  issuing_certificates = ["https://vault.tekanaid.com/v1/pki/ca"]
+  crl_distribution_points= ["https://vault.tekanaid.com/v1/pki/crl"]
+}
+
 #
 # Step 1
 #
