@@ -11,8 +11,8 @@ resource "vault_mount" "root" {
 resource "vault_pki_secret_backend_config_urls" "config_urls" {
   depends_on = [ vault_mount.root ]  
   backend              = vault_mount.root.path
-  issuing_certificates = ["http://vault1.${var.server_cert_domain}:8200/v1/pki/ca"]
-  crl_distribution_points= ["http://vault1.${var.server_cert_domain}:8200/v1/pki/crl"]
+  issuing_certificates = ["https://vault.tekanaid.com/v1/pki/ca"]
+  crl_distribution_points= ["https://vault.tekanaid.com/v1/pki/crl"]
 }
 
 # if you want to create the root cert in VAULT and never expose the 
