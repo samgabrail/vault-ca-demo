@@ -26,8 +26,8 @@ This repo demonstrates:
 
 Command to scp from local to remote machine examples
 ```shell
-scp -r /mnt/c/Users/Sam/Deployments/HashiCorp/Vault/vault-ca-demo/output/grafana Sameh@192.168.1.8:/var/services/homes/Sameh/automation/grafana/config/certs
-scp -r /mnt/c/Users/Sam/Deployments/HashiCorp/Vault/vault-ca-demo/output/homeassistant Sameh@192.168.1.8:/var/services/homes/Sameh/automation/HomeAssistant/certs
+scp -r /mnt/c/Users/Sam/Deployments/HashiCorp/Vault/vault-ca-demo/output/grafana sam@192.168.1.80:/home/sam/automation/grafana/config/certs
+scp -r /mnt/c/Users/Sam/Deployments/HashiCorp/Vault/vault-ca-demo/output/homeassistant sam@192.168.1.80:/home/sam/automation/HomeAssistant/certs
 ```
 
 ## Importing Certs into the Windows Cert Store

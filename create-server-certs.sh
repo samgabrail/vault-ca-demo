@@ -1,5 +1,5 @@
 #!/bin/bash
-# pass the name of the cert as the first argument to the script, common name as second argument, ip_sans as third, and TTL in seconds as fourth. Example: `./create-server-certs.sh grafana SynologyNAS.home 192.168.1.8 31556952`
+# pass the name of the cert as the first argument to the script, common name as second argument, ip_sans as third, and TTL in seconds as fourth. Example: `./create-server-certs.sh grafana docker01.home 192.168.1.80 31556952`
 # Create the Client and Server certs.  There are terraform interfaces to do this, but it seems a bit 
 # clunky, with state management etc.  We could want to generate certs on a regular basis, we probably
 # don't want the certs saved in any state files etc.  So I generate certs with the CLI.
