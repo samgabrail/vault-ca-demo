@@ -31,7 +31,7 @@ resource "vault_pki_secret_backend_config_urls" "config_urls" {
 #   key_type = "rsa"
 #   key_bits = "2048"
 #   exclude_cn_from_sans = true
-#   ou = "Developent"
+#   ou = "Development"
 #   organization = "Clinical 6"
 
 # }
@@ -62,13 +62,13 @@ resource tls_self_signed_cert ca_cert {
    key_algorithm = "RSA"
    subject {
      common_name = "${var.server_cert_domain} Root CA"
-     organization = "Acme Inc"
+     organization = "TeKanAid Solutions Inc"
      organizational_unit = "Development"
      street_address = ["1234 Main Street"]
-     locality = "Beverly Hills"
-     province = "CA"
-     country = "USA"
-     postal_code = "90210"
+     locality = "Toronto"
+     province = "ON"
+     country = "Canada"
+     postal_code = "A0B2X3"
 
    }
    # 175200 = 20 years

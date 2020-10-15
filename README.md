@@ -24,9 +24,10 @@ This repo demonstrates:
 2. Run `Terraform apply`
 3. Run `./create-certs_grafana.sh`
 
-Command to scp from local to remote machine
+Command to scp from local to remote machine examples
 ```shell
-scp -r /mnt/c/Users/Sam/Deployments/HashiCorp/Vault/vault-ca-demo/output/grafana-certs Sameh@192.168.1.8:/var/services/homes/Sameh/automation/grafana/config
+scp -r /mnt/c/Users/Sam/Deployments/HashiCorp/Vault/vault-ca-demo/output/grafana Sameh@192.168.1.8:/var/services/homes/Sameh/automation/grafana/config/certs
+scp -r /mnt/c/Users/Sam/Deployments/HashiCorp/Vault/vault-ca-demo/output/homeassistant Sameh@192.168.1.8:/var/services/homes/Sameh/automation/HomeAssistant/certs
 ```
 
 ## Importing Certs into the Windows Cert Store

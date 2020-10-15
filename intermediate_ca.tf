@@ -41,7 +41,7 @@ resource "vault_pki_secret_backend_root_sign_intermediate" "intermediate" {
   common_name = "${var.server_cert_domain} Intermediate Certificate"
   exclude_cn_from_sans = true
   ou = "Development"
-  organization = "mydomain.com"
+  organization = "home"
   # Note that I am asking for 8 years here, since the vault_mount.root has a max_lease_ttl of 5 years
   # this 8 year request is shortened to 5.
   ttl = 252288000 #8 years
