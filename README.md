@@ -21,8 +21,8 @@ This repo demonstrates:
 ## Running everything
 
 1. Run env-vars.sh to export the VAULT_ADDR and VAULT_TOKEN Environment Variables
-2. Run `Terraform apply`
-3. Run `./create-certs_grafana.sh`
+2. Run `Terraform apply` to create the Root and Intermediate CA along with roles in Vault.
+3. Next to create leaf certificates: Run `./create-server-certs.sh <cert_name> <common_name> <ip_sans> <TTL in seconds>` Example: `./create-server-certs.sh grafana docker01.home 192.168.1.80 31556952`
 
 Command to scp from local to remote machine examples
 ```shell
@@ -31,7 +31,7 @@ scp -r /mnt/c/Users/Sam/Deployments/HashiCorp/Vault/vault-ca-demo/output/homeass
 ```
 
 ## Importing Certs into the Windows Cert Store
-The `create-certs_grafana.sh` script will automatically convert the Intermediate and Root Certs into the `.crt` format to be imported into the Windows Certificate Store
+The `convert-pem.sh` script will automatically convert the Intermediate and Root Certs into the `.crt` format to be imported into the Windows Certificate Store
 
 In the Microsoft Management Console (mmc):
 - You will need to import the root ca cert into the Trusted Root Certification Authorities -> Certificates folder 
