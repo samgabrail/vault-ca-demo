@@ -35,7 +35,7 @@ resource "vault_pki_secret_backend_role" "role-server-cer" {
   max_ttl = 63113904 
   # 30 days
   ttl = 2592000
-  no_store = true
+  no_store = false
 
 }
 
@@ -60,6 +60,6 @@ resource "vault_pki_secret_backend_role" "vault-client-cert" {
   max_ttl = 63113904 
   # 30 days
   ttl = 2592000
-  no_store = true
+  no_store = false
 
 }

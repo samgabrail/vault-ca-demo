@@ -11,8 +11,8 @@ resource "vault_mount" "pki_int" {
 resource "vault_pki_secret_backend_config_urls" "config_urls_int" {
   depends_on = [ vault_mount.pki_int ]  
   backend              = vault_mount.pki_int.path
-  issuing_certificates = ["https://vault.tekanaid.com/v1/pki/ca"]
-  crl_distribution_points= ["https://vault.tekanaid.com/v1/pki/crl"]
+  issuing_certificates = ["https://vault.tekanaid.com/v1/${vault_mount.pki_int.path}/ca"]
+  crl_distribution_points= ["https://vault.tekanaid.com/v1/${vault_mount.pki_int.path}/crl"]
 }
 
 #
