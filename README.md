@@ -46,9 +46,30 @@ You can revoke a certificate by following this example:
 ```shell
 vault write pki-int-ca/revoke serial_number="62:d3:ac:77:93:25:34:11:e0:47:27:0f:d1:db:92:67:51:8c:30:3c"
 ```
-vault write pki-int-ca/revoke serial_number="33:28:aa:4b:99:f0:55:c8:74:23:26:76:86:54:91:07:17:ff:f4:24"
 
 You can also remove a revoked certificate and clean the CRL by:
 ```shell
 vault write pki_int/tidy tidy_cert_store=true tidy_revoked_certs=true
 ```
+
+## Commands to clear CRL cache in Windows 10
+[Based on this](https://social.technet.microsoft.com/Forums/windowsserver/en-US/59758544-d5a2-4c0c-ace0-0bd9fb711c08/revoked-certificate-showing-valid)
+
+To view the CRL Cache:
+```shell
+certutil -urlcache crl
+```
+To Clear it:
+```shell
+certutil -setreg chain\ChainCacheResyncFiletime @now
+```
+
+## Demo Steps
+1. Run Terraform to create the Root and Intermediate CAs using Vault's PKI Secrets Engine
+2. Generate a leaf certificate for Grafana
+3. Add the cert to Grafana and reload the Docker container
+4. Show on Chrome that the browser doesn't trust the cert
+5. Add the root and intermediate CA certs to the Windows Certificate Store
+6. Show how Chrome now trusts the Grafana certificate
+7. Revoke the certificate
+8. Show how Edge recognizes that the cert is now revoked whereas Chrome doesn't check
