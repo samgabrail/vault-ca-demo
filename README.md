@@ -64,7 +64,7 @@ To Clear it:
 certutil -setreg chain\ChainCacheResyncFiletime @now
 ```
 
-## Demo Steps
+## Main PKI Demo Steps
 1. Run Terraform to create the Root and Intermediate CAs using Vault's PKI Secrets Engine
 2. Generate a leaf certificate for Grafana
 3. Add the cert to Grafana and reload the Docker container
@@ -72,4 +72,22 @@ certutil -setreg chain\ChainCacheResyncFiletime @now
 5. Add the root and intermediate CA certs to the Windows Certificate Store
 6. Show how Chrome now trusts the Grafana certificate
 7. Revoke the certificate
-8. Show how Edge recognizes that the cert is now revoked whereas Chrome doesn't check
+8. Show how Chrome now shows you that the cert is revoked and you can't proceed
+
+## Automated Cert Renewal Demo Steps
+1. ![Diagram](https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1&title=Automate%20Certificate%20Renewals#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D12dYhK276bENJjRsS3zNmnZIUTsQ5LyhF%26export%3Ddownload)
+2. Create a Vault PKI policy
+```shell
+path "pki-int-ca/issue/server-cert-for-home" {
+  capabilities = ["update"]
+}
+```
+`vault policy write pki pki.hcl`
+2. Generate a Vault Token `vault token create -policy="pki" -period=24h -orphan`
+3. Consul-template config file
+4. Template files for grafana
+5. Start consul-template `consul-template -config consul-template.hcl`
+6. Show how the cert is valid for 30 seconds
+7. Wait to show how it's invalid
+8. Refresh to show the new valid time/date
+9.  Change to 90 days cert ttl
