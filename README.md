@@ -90,4 +90,4 @@ path "pki-int-ca/issue/server-cert-for-home" {
 6. Show how the cert is valid for 30 seconds
 7. Wait to show how it's invalid
 8. Refresh to show the new valid time/date
-9.  Change to 90 days cert ttl
+9. Change to 90 days cert ttl

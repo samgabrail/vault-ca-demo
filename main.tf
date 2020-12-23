@@ -1,5 +1,4 @@
 # Make sure to 'source ./env-vars.sh'
-
 terraform {
   required_providers {
     vault = {
@@ -8,11 +7,9 @@ terraform {
     }
   }
 }
-
 provider "vault" {
   # Configuration options
 }
-
 #
 # Role for server certs
 #
@@ -38,7 +35,6 @@ resource "vault_pki_secret_backend_role" "role-server-cer" {
   no_store = false
 
 }
-
 resource "vault_pki_secret_backend_role" "vault-client-cert" {
   backend = vault_mount.pki_int.path
   name = "client-cert-for-${var.client_cert_domain}"
@@ -61,5 +57,4 @@ resource "vault_pki_secret_backend_role" "vault-client-cert" {
   # 30 days
   ttl = 2592000
   no_store = false
-
 }

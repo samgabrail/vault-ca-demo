@@ -5,7 +5,7 @@ vault {
   # token        = "s.xxxxxx"
   # grace        = "1s"
   unwrap_token = false
-  renew_token  = false
+  renew_token  = true
 }
 
 syslog {
