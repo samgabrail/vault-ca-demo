@@ -83,10 +83,10 @@ path "pki-int-ca/issue/server-cert-for-home" {
 }
 ```
 `vault policy write pki pki.hcl`
-2. Generate a Vault Token `vault token create -policy="pki" -period=24h -orphan`
+2. Generate a Vault Token `vault token create -policy="pki" -period=24h -orphan` and put it in a file called token.txt
 3. Consul-template config file
 4. Template files for grafana
-5. Start consul-template `consul-template -config consul-template.hcl`
+5. Start consul-template `consul-template -config consul-template.hcl -vault-agent-token-file=token.txt`
 6. Show how the cert is valid for 30 seconds
 7. Wait to show how it's invalid
 8. Refresh to show the new valid time/date
